@@ -1,0 +1,9 @@
+body{
+    background-color: var(--background-color);
+    color: var(--main-text-color);
+}
+
+/* Logo Styling */
+.logo{
+    color: var(--logo-main-color);
+}

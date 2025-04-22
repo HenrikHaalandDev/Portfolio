@@ -1,0 +1,24 @@
+body {
+    padding: 0;
+    margin: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+:root {
+    --background-color: #060607;
+    --main-text-color: #ffffff;
+    --secondary-color: #007bff;
+    --success-color: #28a745;
+    --error-color: #dc3545;
+    --logo-main-color: #8099de;
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+[data-theme="light"] {
+    --background-color: #f8f9fa;
+    --main-text-color: #000000;
+    --secondary-color: #17a2b8;
+    --success-color: #28a745;
+    --error-color: #dc3545;
+    --logo-main-color: #5141ad;
+}
