@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Welcome To My Portfolio</title>
+{% endblock %}
+
+{% block body %}
+<div class="root">
+    <!-- Clean Header -->
+    <header class="header">
+        <p class="logo">Port<span>Folio.</span></p>
+    </header>
+
+    <!-- Hero Content -->
+    <section class="content" id="home">
+        <div>
+            <h1>Henrik Sarawut Bibow Haaland</h1>
+            <p>Aspiring Full-Stack Developer | Focused on Clean Code and Secure Systems</p>
+            <a class="get_started" href="#skills">Explore My Skills</a>
+        </div>
+    </section>
+
+    <!-- Footer with Navigation -->
+    <footer class="footer">
+        
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <p class="footer-note">© 2025 Henrik Haaland</p>
+    </footer>
+</div>
+{% endblock %}
