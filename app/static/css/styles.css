@@ -1,75 +1,9 @@
-body {
+body{
     background-color: var(--background-color);
     color: var(--main-text-color);
-    font-family: 'Poppins', sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    margin: 0;
-    overflow-x: hidden;
 }
 
-.root {
-    height: 100vh;
-}
-
-header {
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 10;
-}
-
-.logo {
+/* Logo Styling */
+.logo{
     color: var(--logo-main-color);
-    font-size: 2rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-shadow: var(--text-shadow);
-}
-
-.logo span {
-    color: var(--main-text-color);
-}
-
-.content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    position: relative;
-    height: 100%;
-    z-index: 5;
-}
-
-.hero-content {
-    max-width: 600px;
-    color: var(--main-text-color);
-    text-shadow: var(--text-shadow);
-}
-
-h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.subtitle {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-}
-
-
-
-footer {
-    display: flex;
-    text-align: center;
-    color: var(--main-text-color);
-    bottom: 0;
-    align-items:center;
-    justify-content:center;
-    flex-direction: column;
 }
