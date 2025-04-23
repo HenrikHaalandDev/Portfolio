@@ -1,24 +1,47 @@
 body {
     padding: 0;
     margin: 0;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+*{
+    font-family: "Poppins", sans-serif;
 }
 
 :root {
     --background-color: #060607;
     --main-text-color: #ffffff;
-    --secondary-color: #007bff;
+    --secondary-color: #4169E1; /* Adjusted to your preference */
+    --accent-color: #4169E1; /* Added the accent color */
+    --accent-color-hover: #4F8AFF; /* Added the hover effect */
     --success-color: #28a745;
     --error-color: #dc3545;
-    --logo-main-color: #8099de;
-    transition: background-color 0.3s, color 0.3s; 
+    --logo-main-color: #63b1f1; 
+    --text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-[data-theme="light"] {
-    --background-color: #f8f9fa;
-    --main-text-color: #000000;
-    --secondary-color: #17a2b8;
+/* Dark mode Variables */
+[data-theme="dark"] {
+    --background-color: #1C1C1C;
+    --main-text-color: #FFFFFF;
+    --secondary-color: #6FA9FF; 
+    --accent-color: #6FA9FF; 
+    --accent-color-hover: #4F8AFF; 
     --success-color: #28a745;
     --error-color: #dc3545;
-    --logo-main-color: #5141ad;
+    --logo-main-color: #63b1f1; 
+    --text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.2);
 }
+
+/* Light mode Variables */
+[data-theme="light"] {
+    --background-color: #F8F8F8; 
+    --main-text-color: #000000;
+    --secondary-color: #4169E1; 
+    --accent-color: #4169E1; 
+    --accent-color-hover: #4F8AFF; 
+    --success-color: #28a745;
+    --error-color: #dc3545;
+    --logo-main-color: #375a7f; 
+    --text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
