@@ -7,6 +7,11 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+html {
+    font-size: 62.5%; /* makes 1rem = 10px */
+}
+
+
 :root {
     --background-color: #060607;
     --main-text-color: #ffffff;
