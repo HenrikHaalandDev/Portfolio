@@ -1,5 +1,5 @@
 /* ===== Root Container ===== */
-.root {
+body{
     background-color: var(--background-color);
     color: var(--main-text-color);
     min-height: 100vh;
@@ -51,22 +51,43 @@ header {
     max-width: 600px;
 }
 
-/* ===== Call-to-Action Button ===== */
-.cta-button {
-    padding: 1rem 2rem;
+/* ===== Hero-page Button ===== */
+.ems-button {
+    padding: 2rem 3rem;
     font-size: 1.4rem;
     background-color: var(--accent-color);
-    color: #fff;
     border: none;
     border-radius: 10px;
-    text-decoration: none;
     transition: background-color 0.3s ease;
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    overflow: hidden;
+    cursor: pointer;
 }
 
-.cta-button:hover {
-    background-color: var(--accent-color-hover);
+.ems-button a{
+    text-decoration: none;
+    color: var(--main-text-color);
 }
+
+.ems-button:hover {
+    opacity: .95;
+}
+.ems-button .animation{
+    border-radius: 100%;
+    animation: ripple 0.6s linear infinite;
+}
+
+@keyframes ripple {
+    0% {
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1), 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1);
+    }
+  
+    100% {
+      box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1), 0 0 0 80px rgba(255, 255, 255, 0);
+    }
+  }
 
 /* ===== Footer ===== */
 .footer {
@@ -100,65 +121,6 @@ header {
 }
 
 
-/* ===== Responsive Adjustments ===== */
-@media (max-width: 475px) {
-    /* ===== Header ===== */
-    header {
-        padding: 0.5rem 1rem;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-    }
 
-    .logo {
-        font-size: 2rem;  /* Shrinking logo size */
-    }
 
-    /* ===== Hero Section ===== */
-    .content {
-        padding: 1rem 0.5rem;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        text-align: center;
-        gap: 1rem;  /* Bringing content elements closer */
-    }
-
-    .hero-content h1 {
-        font-size: 2rem;
-        margin: 0;
-    }
-
-    .subtitle {
-        font-size: 1.1rem;
-        margin-bottom: 1.5rem;  /* Slightly more space below subtitle */
-        max-width: 100%;  /* Allow subtitle to take full width */
-    }
-
-    /* ===== Call-to-Action Button ===== */
-    .cta-button {
-        width: 100%;
-        font-size: 1.2rem;
-        padding: 0.8rem 1rem;
-        margin-top: 1rem;  /* Tighten up button position */
-    }
-
-    /* ===== Footer ===== */
-    .footer {
-        padding: 1rem 0.5rem;
-    }
-
-    .footer nav {
-        gap: 0.4rem;
-        margin-bottom: 1rem;
-    }
-
-    .footer nav a {
-        font-size: 1rem;
-        margin: 0;
-    }
-
-    .footer-note {
-        font-size: 0.75rem;
-    }
-}
+/* ===== Skills.html ===== */
