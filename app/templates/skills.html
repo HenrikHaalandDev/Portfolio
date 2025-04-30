@@ -6,51 +6,262 @@
 
 {% block body %}
 <div id="particle-container"></div>
-<div class="carousel">
-    <div class="carousel-track">
-        <a id="card-1" href="">
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-number">01</div>
-                    <div class="card-image"></div>
-                    <div class="card-text">
-                        <p class="card-title">SQL Injection</p>
-                        <p class="card-description">This shows good/bad praksises for sql injection</p>
-                    </div>
-                    <div class="card-footer">
-                        <div class="card-knowledge">4/10</div>
-                        <div class="card-button"></div>
-                    </div>
-                </div>
+<button class="back-home-button">
+  <a href="{{ url_for('home.home_page') }}">
+      <span class="back-arrow">←</span> Back to Home
+  </a>
+</button>
+<div class="skills-container">
+  <div class="content-wrapper">
+    <!-- Security Section -->
+    <div class="section">
+      <h2 class="section-header">Security</h2>
+      <div class="cards-container">
+        <!-- card 1 -->
+        <a class="my-cards" href="{{ url_for('sql_injection.sqlInjection_page')}}">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-number">01</div>
+              <div class="card-image"></div>
+              <div class="card-text">
+                <p class="card-title">SQL Injection</p>
+                <p class="card-description">This shows good/bad practices for SQL injection prevention</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-knowledge">4/10</div>
+                <div class="card-button"></div>
+              </div>
             </div>
+          </div>
         </a>
+
+        <!-- card 2 -->
+        <a class="my-cards" href="#">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-number">02</div>
+              <div class="card-image"></div>
+              <div class="card-text">
+                <p class="card-title">XSS Prevention</p>
+                <p class="card-description">Cross-site scripting attack prevention techniques</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-knowledge">5/10</div>
+                <div class="card-button"></div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- card 3 -->
+        <a class="my-cards" href="#">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-number">03</div>
+              <div class="card-image"></div>
+              <div class="card-text">
+                <p class="card-title">Authentication</p>
+                <p class="card-description">Secure authentication methods and implementation</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-knowledge">6/10</div>
+                <div class="card-button"></div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- card 4 (additional card) -->
+        <a class="my-cards" href="#">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-number">04</div>
+              <div class="card-image"></div>
+              <div class="card-text">
+                <p class="card-title">CSRF Protection</p>
+                <p class="card-description">Cross-Site Request Forgery prevention strategies</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-knowledge">5/10</div>
+                <div class="card-button"></div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="slider-navigation">
+        <button class="slider-prev">Previous</button>
+        <div class="slider-indicators"></div>
+        <button class="slider-next">Next</button>
+      </div>
     </div>
 
+    <!-- Database Section -->
+    <div class="section">
+      <h2 class="section-header">Database</h2>
+      <div class="cards-container">
+        <!-- card 1 -->
+        <a class="my-cards" href="#">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-number">01</div>
+              <div class="card-image"></div>
+              <div class="card-text">
+                <p class="card-title">Database Design</p>
+                <p class="card-description">Best practices for database schema design</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-knowledge">7/10</div>
+                <div class="card-button"></div>
+              </div>
+            </div>
+          </div>
+        </a>
 
-    <!-- <div class="card">
-  <div class="card__shine"></div>
-  <div class="card__glow"></div>
-  <div class="card__content">
-    <div class="card__badge">NEW</div>
-    <div style="--bg-color: #a78bfa" class="card__image"></div>
-    <div class="card__text">
-      <p class="card__title">Premium Design</p>
-      <p class="card__description">Hover to reveal stunning effects</p>
+        <!-- card 2 -->
+        <a class="my-cards" href="#">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-number">02</div>
+              <div class="card-image"></div>
+              <div class="card-text">
+                <p class="card-title">Query Optimization</p>
+                <p class="card-description">Techniques to optimize database queries</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-knowledge">5/10</div>
+                <div class="card-button"></div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- card 3 -->
+        <a class="my-cards" href="#">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-number">03</div>
+              <div class="card-image"></div>
+              <div class="card-text">
+                <p class="card-title">ORM Frameworks</p>
+                <p class="card-description">Working with Object-Relational Mapping frameworks</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-knowledge">6/10</div>
+                <div class="card-button"></div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- card 4 (additional card) -->
+        <a class="my-cards" href="#">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-number">04</div>
+              <div class="card-image"></div>
+              <div class="card-text">
+                <p class="card-title">NoSQL Systems</p>
+                <p class="card-description">Working with MongoDB, Redis and other NoSQL databases</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-knowledge">4/10</div>
+                <div class="card-button"></div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="slider-navigation">
+        <button class="slider-prev">Previous</button>
+        <div class="slider-indicators"></div>
+        <button class="slider-next">Next</button>
+      </div>
     </div>
-    <div class="card__footer">
-      <div class="card__price">$49.99</div>
-      <div class="card__button">
-        <svg height="16" width="16" viewBox="0 0 24 24">
-          <path
-            stroke-width="2"
-            stroke="currentColor"
-            d="M4 12H20M12 4V20"
-            fill="currentColor"
-          ></path>
-        </svg>
+
+    <!-- Web Development Section -->
+    <div class="section">
+      <h2 class="section-header">Web Development</h2>
+      <div class="cards-container">
+        <!-- card 1 -->
+        <a class="my-cards" href="#">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-number">01</div>
+              <div class="card-image"></div>
+              <div class="card-text">
+                <p class="card-title">Frontend Frameworks</p>
+                <p class="card-description">Experience with React, Vue, and Angular</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-knowledge">8/10</div>
+                <div class="card-button"></div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- card 2 -->
+        <a class="my-cards" href="#">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-number">02</div>
+              <div class="card-image"></div>
+              <div class="card-text">
+                <p class="card-title">Responsive Design</p>
+                <p class="card-description">Creating layouts that work on all devices</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-knowledge">7/10</div>
+                <div class="card-button"></div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- card 3 -->
+        <a class="my-cards" href="#">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-number">03</div>
+              <div class="card-image"></div>
+              <div class="card-text">
+                <p class="card-title">Backend Development</p>
+                <p class="card-description">Server-side programming with various frameworks</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-knowledge">6/10</div>
+                <div class="card-button"></div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- card 4 (additional card) -->
+        <a class="my-cards" href="#">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-number">04</div>
+              <div class="card-image"></div>
+              <div class="card-text">
+                <p class="card-title">API Development</p>
+                <p class="card-description">RESTful and GraphQL API design and implementation</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-knowledge">7/10</div>
+                <div class="card-button"></div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="slider-navigation">
+        <button class="slider-prev">Previous</button>
+        <div class="slider-indicators"></div>
+        <button class="slider-next">Next</button>
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
-    {% endblock %}
+{% endblock %}

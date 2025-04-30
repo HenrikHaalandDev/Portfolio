@@ -1,0 +1,286 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>SQL Injection - Security Skills</title>
+{% endblock %}
+
+{% block body %}
+<button class="back-home-button">
+    <a href="{{ url_for('skills.skill_page') }}">
+        <span class="back-arrow">←</span> Back to Skills
+    </a>
+</button>
+
+<div class="sql-injection-container">
+    <h1 class="page-title">Understanding SQL Injection</h1>
+
+    <section class="section">
+        <h2 class="section-header">What is SQL Injection?</h2>
+        <p>SQL Injection is a code injection technique that exploits vulnerabilities in web applications that use SQL
+            databases. Attackers can insert malicious SQL statements into entry fields that are later executed by the
+            database server.</p>
+
+        <div class="visualization">
+            <div class="diagram">
+                <svg viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- User -->
+                    <circle cx="100" cy="150" r="40" fill="rgba(65, 105, 225, 0.7)" />
+                    <text x="100" y="155" text-anchor="middle" fill="white" font-size="14">User</text>
+
+                    <!-- Malicious User -->
+                    <circle cx="100" cy="250" r="40" fill="rgba(220, 53, 69, 0.7)" />
+                    <text x="100" y="255" text-anchor="middle" fill="white" font-size="14">Attacker</text>
+
+                    <!-- Web Application -->
+                    <rect x="300" y="100" width="200" height="100" rx="10" fill="rgba(65, 105, 225, 0.5)" />
+                    <text x="400" y="155" text-anchor="middle" fill="white" font-size="14">Web Application</text>
+
+                    <!-- Database -->
+                    <rect x="650" y="100" width="100" height="100" rx="10" fill="rgba(40, 167, 69, 0.7)" />
+                    <text x="700" y="155" text-anchor="middle" fill="white" font-size="14">Database</text>
+
+                    <!-- Normal Flow -->
+                    <line x1="140" y1="150" x2="300" y2="150" stroke="rgba(65, 105, 225, 0.8)" stroke-width="3" />
+                    <text x="220" y="140" text-anchor="middle" fill="white" font-size="12">Valid Input</text>
+
+                    <line x1="500" y1="150" x2="650" y2="150" stroke="rgba(65, 105, 225, 0.8)" stroke-width="3" />
+                    <text x="575" y="140" text-anchor="middle" fill="white" font-size="12">Safe Query</text>
+
+                    <!-- Attack Flow -->
+                    <line x1="140" y1="250" x2="300" y2="180" stroke="rgba(220, 53, 69, 0.8)" stroke-width="3" />
+                    <text x="240" y="230" text-anchor="middle" fill="white" font-size="12">Malicious Input</text>
+
+                    <line x1="500" y1="165" x2="650" y2="165" stroke="rgba(220, 53, 69, 0.8)" stroke-width="3"
+                        stroke-dasharray="5,5" />
+                    <text x="575" y="180" text-anchor="middle" fill="white" font-size="12">SQL Injection</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-header">Vulnerable vs. Secure Code Examples</h2>
+
+        <div class="comparison">
+            <div class="code-example">
+                <div class="code-header">
+                    <h3>Vulnerable Code</h3>
+                    <span class="code-status bad">UNSAFE</span>
+                </div>
+                <pre class="code-content">// PHP Example
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+$query = "SELECT * FROM users 
+          WHERE username = '$username' 
+          AND password = '$password'";
+
+$result = mysqli_query($connection, $query);</pre>
+            </div>
+
+            <div class="code-example">
+                <div class="code-header">
+                    <h3>Secure Code</h3>
+                    <span class="code-status good">SAFE</span>
+                </div>
+                <pre class="code-content">// PHP Example
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+$stmt = $connection->prepare("SELECT * FROM users 
+                             WHERE username = ? 
+                             AND password = ?");
+$stmt->bind_param("ss", $username, $password);
+$stmt->execute();</pre>
+            </div>
+        </div>
+
+        <div class="comparison">
+            <div class="code-example">
+                <div class="code-header">
+                    <h3>Vulnerable Code</h3>
+                    <span class="code-status bad">UNSAFE</span>
+                </div>
+                <pre class="code-content">// Python Example (Flask/SQLAlchemy)
+@app.route('/search')
+def search():
+    query = request.args.get('q')
+    
+    sql = f"SELECT * FROM products WHERE name LIKE '%{query}%'"
+    results = db.engine.execute(sql)
+    
+    return render_template('results.html', results=results)</pre>
+            </div>
+
+            <div class="code-example">
+                <div class="code-header">
+                    <h3>Secure Code</h3>
+                    <span class="code-status good">SAFE</span>
+                </div>
+                <pre class="code-content">// Python Example (Flask/SQLAlchemy)
+@app.route('/search')
+def search():
+    query = request.args.get('q')
+    
+    # Using SQLAlchemy ORM
+    results = Product.query.filter(
+        Product.name.like(f'%{query}%')
+    ).all()
+    
+    # Or with parameterized query
+    sql = text("SELECT * FROM products WHERE name LIKE :query")
+    results = db.engine.execute(sql, {"query": f"%{query}%"})
+    
+    return render_template('results.html', results=results)</pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-header">Common SQL Injection Attacks</h2>
+
+        <div class="attack-example">
+            <h3 class="attack-title">1. Authentication Bypass</h3>
+            <div class="attack-input">username: admin' --</div>
+            <p class="attack-explanation">
+                The resulting SQL becomes:
+                <code>SELECT * FROM users WHERE username = 'admin' -- ' AND password = 'anything'</code><br>
+                The <span class="danger">--</span> characters comment out the rest of the query, bypassing the password
+                check entirely.
+            </p>
+        </div>
+
+        <div class="attack-example">
+            <h3 class="attack-title">2. UNION Attack</h3>
+            <div class="attack-input">product' UNION SELECT username, password, NULL FROM users --</div>
+            <p class="attack-explanation">
+                The resulting SQL becomes:
+                <code>SELECT * FROM products WHERE name LIKE '%product' UNION SELECT username, password, NULL FROM users --%'</code><br>
+                This tricks the database into returning user credentials alongside normal results.
+            </p>
+        </div>
+
+        <div class="attack-example">
+            <h3 class="attack-title">3. Database Information Extraction</h3>
+            <div class="attack-input">product' AND 1=0 UNION SELECT table_name, column_name, NULL FROM
+                information_schema.columns --</div>
+            <p class="attack-explanation">
+                This attack retrieves database schema information, revealing table and column names that can be targeted
+                in future attacks.
+            </p>
+        </div>
+
+        <div class="attack-example">
+            <h3 class="attack-title">4. Blind SQL Injection</h3>
+            <div class="attack-input">product' AND (SELECT SUBSTRING(username,1,1) FROM users WHERE id=1)='a</div>
+            <p class="attack-explanation">
+                Used when direct error messages aren't visible. The attacker can still extract data by observing
+                differences in application behavior between true and false conditions.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-header">Prevention Best Practices</h2>
+
+        <div class="prevention-tips">
+            <div class="tip-card">
+                <h3 class="tip-header">1. Use Prepared Statements</h3>
+                <p>Always use parameterized queries with prepared statements. This ensures that user input is treated as
+                    data, not executable code.</p>
+            </div>
+
+            <div class="tip-card">
+                <h3 class="tip-header">2. Input Validation</h3>
+                <p>Validate and sanitize all user inputs. Reject any suspicious input that doesn't match expected
+                    patterns or contains potentially harmful characters.</p>
+            </div>
+
+            <div class="tip-card">
+                <h3 class="tip-header">3. Use ORM Libraries</h3>
+                <p>Object Relational Mapping (ORM) libraries like Hibernate, SQLAlchemy, or Entity Framework have
+                    built-in protections against SQL injection.</p>
+            </div>
+
+            <div class="tip-card">
+                <h3 class="tip-header">4. Least Privilege</h3>
+                <p>Use database accounts with minimal permissions needed for the application. This limits the damage if
+                    an injection occurs.</p>
+            </div>
+
+            <div class="tip-card">
+                <h3 class="tip-header">5. Escape Special Characters</h3>
+                <p>When parameterized queries aren't possible, properly escape all special characters in user inputs
+                    before including them in queries.</p>
+            </div>
+
+            <div class="tip-card">
+                <h3 class="tip-header">6. Stored Procedures</h3>
+                <p>Use stored procedures with parameters instead of dynamic SQL to create an additional layer of
+                    protection.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-header">Interactive Demo</h2>
+        <div class="interactive-demo">
+            <h3 class="demo-header">Login Form Simulation</h3>
+            <div class="demo-content">
+                <p>Try entering these malicious inputs to see how they could affect a vulnerable system:</p>
+                <ul>
+                    <li><code>admin' --</code> (bypasses password check)</li>
+                    <li><code>' OR '1'='1</code> (always evaluates to true)</li>
+                    <li><code>admin'; DROP TABLE users; --</code> (attempts to delete data)</li>
+                </ul>
+
+                <div class="demo-form">
+                    <input type="text" class="demo-input" id="demo-username" placeholder="Username">
+                    <input type="password" class="demo-input" id="demo-password" placeholder="Password">
+                    <button class="demo-button" id="demo-submit">Login</button>
+                </div>
+
+                <div class="demo-result" id="demo-result">
+                    <!-- Results will appear here -->
+                    <p>Enter credentials above to see how SQL injection works</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-header">Real-World SQL Injection Cases</h2>
+        <div class="real-world-cases">
+            <ul class="case-list">
+                <li class="case-item">
+                    <h3 class="case-title">Sony Pictures (2011)</h3>
+                    <p>Hackers used SQL injection to access sensitive data from over 1 million user accounts, including
+                        names, addresses, and passwords.</p>
+                </li>
+                <li class="case-item">
+                    <h3 class="case-title">LinkedIn (2012)</h3>
+                    <p>A SQL injection attack led to the exposure of 6.5 million hashed passwords, which were later
+                        decrypted due to weak hashing.</p>
+                </li>
+                <li class="case-item">
+                    <h3 class="case-title">Yahoo (2012)</h3>
+                    <p>SQL injection vulnerabilities allowed attackers to compromise over 450,000 user accounts from the
+                        Yahoo Voices platform.</p>
+                </li>
+                <li class="case-item">
+                    <h3 class="case-title">Heartland Payment Systems (2008)</h3>
+                    <p>One of the largest data breaches in history started with a SQL injection attack, resulting in the
+                        theft of 134 million credit card numbers.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+<script>
+    // Potentially add more interactive elements here
+    document.addEventListener('DOMContentLoaded', function () {
+        // Any additional JavaScript initialization
+    });
+</script>
+{% endblock %}
