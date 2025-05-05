@@ -128,14 +128,15 @@ header {
 /* ===== Skills page main styles ===== */
 
 
-.back-home-button {
+.back-button {
   position: fixed;
   top: 2rem;
   left: 2rem;
   padding: 1rem 1.5rem;
   font-size: 1.4rem;
   background-color: var(--accent-color);
-  border: none;
+  border: 1px solid var(--background-color);
+  border-color: var(--background-color) invert; /* learned that "invert is a key" */
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
@@ -146,12 +147,12 @@ header {
   cursor: pointer;
 }
 
-.back-home-button:hover {
+.back-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
 }
 
-.back-home-button a {
+.back-button a {
   text-decoration: none;
   color: var(--main-text-color);
   font-weight: 500;
@@ -167,7 +168,7 @@ header {
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
-  .back-home-button {
+  .back-button {
     top: 1.5rem;
     left: 1.5rem;
     padding: 0.8rem 1.2rem;
@@ -623,7 +624,7 @@ header {
   left: 2rem;
   background-color: var(--accent-color);
   color: white;
-  border: none;
+  border: 2px solid black;
   padding: 1rem 2rem;
   border-radius: 4px;
   cursor: pointer;
@@ -749,4 +750,86 @@ header {
   .prevention-tips {
     grid-template-columns: 1fr;
   }
+}
+
+
+/* Menu Styles */
+.menu-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  position: relative;
+}
+
+.menu {
+  display: flex;
+  gap: 4rem;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+.menu-item {
+  position: relative;
+  width: 30rem;
+  height: 20rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item:hover {
+  transform: translateY(-1rem);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.menu-item-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.7);
+  transition: all 0.3s ease;
+}
+
+.menu-item:hover .menu-item-background {
+  filter: brightness(0.9);
+  transform: scale(1.1);
+}
+
+.menu-item-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.menu-item-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.menu-item:hover .menu-item-title {
+  transform: scale(1.1);
 }

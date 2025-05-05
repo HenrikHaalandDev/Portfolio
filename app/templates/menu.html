@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Choose your subject</title>
+{% endblock %}
+
+{% block body %}
+<div id="particle-container"></div>
+<div class="menu-container">
+    <div class="menu">
+        <a href="{{ url_for('skills.skill_page') }}" class="menu-item" id="skills-item">
+            <div class="menu-item-background" style="background-image: url('https://www.picpedia.org/keyboard/images/technical-skills.jpg')"></div>
+            <div class="menu-item-content">
+                <h2 class="menu-item-title">My Skills</h2>
+            </div>
+        </a>
+        
+        <a href="projects.html" class="menu-item" id="projects-item">
+            <div class="menu-item-background" style="background-image: url('https://pix4free.org/assets/library/2021-07-05/originals/projects.jpg')"></div>
+            <div class="menu-item-content">
+                <h2 class="menu-item-title">My Projects</h2>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}
