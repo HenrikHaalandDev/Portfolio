@@ -6,6 +6,11 @@
 
 {% block body %}
 <div id="particle-container"></div>
+<button class="back-button">
+    <a href="{{ url_for('home.home_page') }}">
+        <span class="back-arrow">←</span> Back Home
+    </a>
+  </button>
 <div class="menu-container">
     <div class="menu">
         <a href="{{ url_for('skills.skill_page') }}" class="menu-item" id="skills-item">
@@ -15,7 +20,7 @@
             </div>
         </a>
         
-        <a href="projects.html" class="menu-item" id="projects-item">
+        <a href="{{ url_for('projects.projects_page') }}" class="menu-item" id="projects-item">
             <div class="menu-item-background" style="background-image: url('https://pix4free.org/assets/library/2021-07-05/originals/projects.jpg')"></div>
             <div class="menu-item-content">
                 <h2 class="menu-item-title">My Projects</h2>

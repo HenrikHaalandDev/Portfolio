@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
     document.documentElement.setAttribute('data-theme', savedTheme || 'dark');
 });
-
+    
 // Toggle theme and save to localStorage
 const toggleButton = document.getElementById('input');
 

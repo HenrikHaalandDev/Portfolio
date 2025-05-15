@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>My Skills</title>
+{% endblock %}
+
+{% block body %}
+<div id="particle-container"></div>
+<button class="back-button">
+  <a href="{{ url_for('menu.menu_page') }}">
+      <span class="back-arrow">←</span> Back to Menu
+  </a>
+</button>
+<div class="skills-container">
+  <div class="content-wrapper">
+    <!-- All My Projects-->
+    <div class="section">
+      <h2 class="section-header">Some small snips of projects Ive created</h2>
+      <div class="cards-container">
+        <!-- card 1 -->
+        <a class="my-cards" href="{{ url_for('loginSystem.loginSystem_page') }}">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-number">01</div>
+              <div class="card-image"></div>
+              <div class="card-text">
+                <p class="card-title">A simple login/regiser system</p>
+                <p class="card-description"></p>
+              </div>
+              <div class="card-footer">
+                <div class="card-knowledge">10/10</div>
+                <div class="card-button"></div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- card 2 -->
+        <a class="my-cards" href="#">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-number">02</div>
+              <div class="card-image"></div>
+              <div class="card-text">
+                <p class="card-title">XSS Prevention</p>
+                <p class="card-description">Cross-site scripting attack prevention techniques</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-knowledge">5/10</div>
+                <div class="card-button"></div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- card 3 -->
+        <a class="my-cards" href="#">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-number">03</div>
+              <div class="card-image"></div>
+              <div class="card-text">
+                <p class="card-title">Authentication</p>
+                <p class="card-description">Secure authentication methods and implementation</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-knowledge">6/10</div>
+                <div class="card-button"></div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- card 4 (additional card) -->
+        <a class="my-cards" href="#">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-number">04</div>
+              <div class="card-image"></div>
+              <div class="card-text">
+                <p class="card-title">CSRF Protection</p>
+                <p class="card-description">Cross-Site Request Forgery prevention strategies</p>
+              </div>
+              <div class="card-footer">
+                <div class="card-knowledge">5/10</div>
+                <div class="card-button"></div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="slider-navigation">
+        <button class="slider-prev">Previous</button>
+        <div class="slider-indicators"></div>
+        <button class="slider-next">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
