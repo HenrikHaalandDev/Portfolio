@@ -1,4 +1,6 @@
+
 # Personal Portfolio Website
+
 ## Table of Contents
 - [Personal Portfolio Website](#personal-portfolio-website)
   - [Table of Contents](#table-of-contents)
@@ -29,6 +31,7 @@
   - [Setup and Installation](#setup-and-installation)
     - [Prerequisites](#prerequisites)
     - [Installation Steps](#installation-steps)
+    - [Why Waitress Instead of Flask's Built-In Server](#why-waitress-instead-of-flasks-built-in-server)
   - [Contact](#contact)
 
 ## Project Overview
@@ -229,9 +232,21 @@ pip install -r requirements.txt
 python app.py
 ```
 
+### Why Waitress Instead of Flask's Built-In Server
+
+Although Flask comes with a built-in development server, it is **not designed for production use**. For this project, I use **Waitress**, a production-grade WSGI server, because:
+
+* 🚀 **Stability and Performance**: Waitress is multi-threaded and more stable under real traffic loads.
+* 🔐 **Security**: The built-in Flask server lacks hardening features for deployment, whereas Waitress is designed for exposed environments.
+* 💻 **Cross-platform Compatibility**: Waitress works consistently across Windows and Linux systems.
+* 🧩 **WSGI-Compliant**: It adheres to Python's WSGI standard, making it a better choice for hosting with reverse proxies like Nginx.
+
+> In summary, **Waitress bridges the gap between development and production**—giving this portfolio site the reliability and performance needed for real-world deployment.
+
 ## Contact
 
 Henrik Sarawut Bibow Haaland
 
 * GitHub: [HenrikHaalandDev](https://github.com/HenrikHaalandDev)
 * Email: [henrik.haaland@osloskolen.no](mailto:henrik.haaland@osloskolen.no)
+
