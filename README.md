@@ -1,7 +1,7 @@
-
 # Personal Portfolio Website
 
 ## Table of Contents
+
 - [Personal Portfolio Website](#personal-portfolio-website)
   - [Table of Contents](#table-of-contents)
   - [Project Overview](#project-overview)
@@ -35,43 +35,51 @@
   - [Contact](#contact)
 
 ## Project Overview
+
 This is a personal portfolio website built using Flask, showcasing my skills, projects, and expertise in coding and security.
 
 ## Tech Stack
-- **Backend**: Flask (Python)
-- **Frontend**: HTML, CSS, JavaScript
-- **Key Features**:
-  - Responsive Design
-  - Dark/Light Mode
-  - Interactive Skills Showcase
-  - SQL Injection Educational Page
-  - Login/Authentication System
+
+* **Backend**: Flask (Python)
+* **Frontend**: HTML, CSS, JavaScript
+* **Key Features**:
+
+  * Responsive Design
+  * Dark/Light Mode
+  * Interactive Skills Showcase
+  * SQL Injection Educational Page
+  * Login/Authentication System
 
 ## Design Philosophy and Color Scheme
 
 ### Color Palette Strategy
+
 The color scheme is carefully crafted to provide both aesthetic appeal and optimal user experience:
 
-- **Dark Mode Palette**:
-  - Background: `#1C1C1C` (Deep Charcoal)
-  - Main Text: `#FFFFFF` (Pure White)
-  - Accent Color: `#6FA9FF` (Soft Blue)
-  - Secondary Color: `#6FA9FF` (Complementary Soft Blue)
+* **Dark Mode Palette**:
 
-- **Light Mode Palette**:
-  - Background: `#F8F8F8` (Soft White)
-  - Main Text: `#000000` (Pure Black)
-  - Accent Color: `#4169E1` (Royal Blue)
+  * Background: `#1C1C1C` (Deep Charcoal)
+  * Main Text: `#FFFFFF` (Pure White)
+  * Accent Color: `#6FA9FF` (Soft Blue)
+  * Secondary Color: `#6FA9FF` (Complementary Soft Blue)
+
+* **Light Mode Palette**:
+
+  * Background: `#F8F8F8` (Soft White)
+  * Main Text: `#000000` (Pure Black)
+  * Accent Color: `#4169E1` (Royal Blue)
 
 #### Color Choice Rationale
-1. **Accessibility**: High contrast between background and text ensures readability  
-2. **Modern Aesthetic**: Soft, muted colors with a professional feel  
-3. **Emotional Impact**: Blue tones convey trust, professionalism, and calm  
-4. **Flexibility**: Smooth transition between dark and light modes  
+
+1. **Accessibility**: High contrast between background and text ensures readability
+2. **Modern Aesthetic**: Soft, muted colors with a professional feel
+3. **Emotional Impact**: Blue tones convey trust, professionalism, and calm
+4. **Flexibility**: Smooth transition between dark and light modes
 
 ### Responsive Design Approach
 
 #### Mobile-First Methodology
+
 The website uses a mobile-first approach, ensuring a seamless experience across devices:
 
 ```css
@@ -89,7 +97,7 @@ The website uses a mobile-first approach, ensuring a seamless experience across 
     font-size: 2.4rem;
   }
 }
-````
+```
 
 #### Key Responsive Techniques
 
@@ -206,9 +214,23 @@ The SQL Injection page serves as an educational resource to demonstrate:
 
 ### Prerequisites
 
-* Python 3.8+
-* Flask
-* Virtual Environment recommended
+* **Python 3.8+**
+  Required to run the Flask backend.
+  Download: [https://www.python.org/downloads/](https://www.python.org/downloads/)
+
+* **Git**
+  Required for cloning the repository and version control.
+  Download: [https://git-scm.com/downloads](https://git-scm.com/downloads)
+
+* **Visual Studio Code**
+  Recommended code editor for working with Python, HTML, CSS, and JavaScript.
+  Download: [https://code.visualstudio.com/](https://code.visualstudio.com/)
+
+* **Flask**
+  Installable via `pip` from the `requirements.txt` file.
+
+* **Virtual Environment (venv)**
+  Recommended for isolating project dependencies.
 
 ### Installation Steps
 
@@ -236,10 +258,10 @@ python app.py
 
 Although Flask comes with a built-in development server, it is **not designed for production use**. For this project, I use **Waitress**, a production-grade WSGI server, because:
 
-* 🚀 **Stability and Performance**: Waitress is multi-threaded and more stable under real traffic loads.
-* 🔐 **Security**: The built-in Flask server lacks hardening features for deployment, whereas Waitress is designed for exposed environments.
-* 💻 **Cross-platform Compatibility**: Waitress works consistently across Windows and Linux systems.
-* 🧩 **WSGI-Compliant**: It adheres to Python's WSGI standard, making it a better choice for hosting with reverse proxies like Nginx.
+* **Stability and Performance**: Waitress is multi-threaded and more stable under real traffic loads.
+* **Security**: The built-in Flask server lacks hardening features for deployment, whereas Waitress is designed for exposed environments.
+* **Cross-platform Compatibility**: Waitress works consistently across Windows and Linux systems.
+* **WSGI-Compliant**: It adheres to Python's WSGI standard, making it a better choice for hosting with reverse proxies like Nginx.
 
 > In summary, **Waitress bridges the gap between development and production**—giving this portfolio site the reliability and performance needed for real-world deployment.
 
@@ -249,4 +271,3 @@ Henrik Sarawut Bibow Haaland
 
 * GitHub: [HenrikHaalandDev](https://github.com/HenrikHaalandDev)
 * Email: [henrik.haaland@osloskolen.no](mailto:henrik.haaland@osloskolen.no)
-
